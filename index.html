@@ -1,287 +1,874 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Sandeep Gautam | Geomatics Engineer & GeoAI Developer</title>
-  <meta content="Portfolio of Sandeep Gautam, Geomatics Engineer specializing in GIS, remote sensing, and GeoAI." name="description">
-  <meta content="Sandeep Gautam, Geomatics Engineer, GIS, Remote Sensing, GeoAI, U-Net, YOLOv8, Nepal" name="keywords">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandeep Gautam — Geomatics Engineer &amp; GeoAI Developer</title>
+<meta name="description" content="Portfolio of Sandeep Gautam, Geomatics Engineer specializing in GIS, remote sensing, and GeoAI.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23131f19'/%3E%3Cpath d='M15 70 Q35 30 50 55 Q65 30 85 70' stroke='%23c2572c' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 
-  <link href="assets\img\hero_bg.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --ink:#f8fafd;
+  --ink-soft:#d3e3fa;
+  --ink-softer:#c2d7f6;
+  --paper:#f8fafd;
+  --paper-dim:#eef3fc;
+  --paper-line:#d7e3f5;
+  --line:#a9bfe4;
+  --flag:#0090D4;
+  --flag-dim:#00719F;
+  --water:#33B5E8;
+  --water-dim:#eef1fb;
+  --ink-text:#101a33;
+  --ink-text-dim:#4d5b7c;
+  --paper-text:#141a2b;
+  --paper-text-dim:#5b6478;
 
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  --font-display:'Poppins', sans-serif;
+  --font-body:'Roboto', sans-serif;
+  --font-mono:'Roboto Mono', monospace;
 
-  <link href="assets/css/main.css" rel="stylesheet">
+  --sidebar-w:272px;
+  --ease:cubic-bezier(.22,.68,.24,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  background:var(--paper);
+  color:var(--paper-text);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{margin:0;padding:0;list-style:none;}
+h1,h2,h3,h4,h5{margin:0;font-family:var(--font-display);font-weight:600;letter-spacing:-.01em;}
+p{margin:0;}
+button{font:inherit;background:none;border:none;cursor:pointer;color:inherit;}
+input,textarea{font:inherit;}
+:focus-visible{outline:2px solid var(--flag);outline-offset:3px;}
+
+.mono{font-family:var(--font-mono);}
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--flag);
+  display:flex;align-items:center;gap:.55em;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--flag);display:inline-block;}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,56px);}
+
+/* ============================================================
+   SIDEBAR / NAV — styled as a field-log legend panel
+   ============================================================ */
+.sidebar{
+  position:fixed;
+  top:0;left:0;bottom:0;
+  width:var(--sidebar-w);
+  background:var(--ink);
+  color:var(--ink-text);
+  display:flex;
+  flex-direction:column;
+  padding:34px 30px 26px;
+  z-index:100;
+  border-right:1px solid rgba(16,26,51,.08);
+  transition:transform .45s var(--ease);
+}
+.sidebar::after{
+  content:"";
+  position:absolute;inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(16,26,51,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16,26,51,.05) 1px, transparent 1px);
+  background-size:26px 26px;
+  mask-image:linear-gradient(to bottom, black, transparent 88%);
+}
+.brand{position:relative;z-index:1;}
+.brand-mark{
+  width:64px;height:64px;
+  border-radius:50%;
+  border:1.5px solid rgba(16,26,51,.25);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  margin-bottom:18px;
+}
+.brand-mark::before{
+  content:"";
+  position:absolute;inset:8px;
+  border:1px solid rgba(0,144,212,.55);
+  border-radius:50%;
+}
+.brand-mark span{
+  font-family:var(--font-display);
+  font-size:1.5rem;
+  font-weight:600;
+  color:var(--flag);
+}
+.brand h1{
+  font-size:1.28rem;
+  color:var(--ink-text);
+  line-height:1.15;
+}
+.brand .role-tag{
+  margin-top:6px;
+  font-family:var(--font-body);
+  font-weight:500;
+  font-size:.78rem;
+  letter-spacing:.02em;
+  color:var(--ink-text-dim);
+}
+
+.social-row{
+  position:relative;z-index:1;
+  display:flex;
+  gap:10px;
+  margin:22px 0 6px;
+}
+.social-row a{
+  width:36px;height:36px;
+  border:1px solid rgba(16,26,51,.15);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .25s, transform .25s, background .25s;
+}
+.social-row a svg{width:16px;height:16px;stroke:var(--ink-text-dim);transition:stroke .25s;}
+.social-row a:hover{border-color:var(--flag); background:rgba(0,144,212,.12); transform:translateY(-2px);}
+.social-row a:hover svg{stroke:var(--flag);}
+
+.navmenu{
+  position:relative;z-index:1;
+  margin-top:auto;
+  padding-top:26px;
+}
+.navmenu ul{display:flex;flex-direction:column;gap:2px;}
+.navmenu a{
+  display:flex;align-items:center;gap:13px;
+  font-family:var(--font-body);
+  font-weight:500;
+  font-size:.9rem;
+  letter-spacing:.01em;
+  padding:10px 10px;
+  border-radius:8px;
+  color:var(--ink-text-dim);
+  transition:color .2s, background .2s, padding-left .2s;
+  position:relative;
+}
+.navmenu a:hover{color:var(--ink-text); background:rgba(16,26,51,.06); padding-left:14px;}
+.navmenu a.active{color:var(--paper); background:var(--flag);}
+
+.sidebar-foot{
+  position:relative;z-index:1;
+  margin-top:20px;
+  font-family:var(--font-body);
+  font-size:.72rem;
+  color:rgba(16,26,51,.5);
+  letter-spacing:.02em;
+}
+
+.nav-toggle{
+  display:none;
+  position:fixed;
+  top:16px;right:16px;
+  z-index:200;
+  width:44px;height:44px;
+  background:var(--ink);
+  border:1px solid rgba(16,26,51,.15);
+  border-radius:10px;
+  align-items:center;justify-content:center;
+}
+.nav-toggle svg{width:20px;height:20px;stroke:var(--ink-text);}
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.main{margin-left:var(--sidebar-w);}
+
+section{position:relative;}
+
+.sheet-tag{
+  position:absolute;
+  top:38px;right:clamp(20px,4vw,56px);
+  font-family:var(--font-mono);
+  font-size:.68rem;
+  letter-spacing:.1em;
+  color:var(--paper-text-dim);
+  border:1px solid var(--paper-line);
+  padding:5px 10px;
+  border-radius:20px;
+  display:flex;align-items:center;gap:6px;
+}
+.sheet-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--flag);}
+
+.section-head{padding:96px 0 46px;}
+.section-head .eyebrow{margin-bottom:14px;}
+.section-head h2{font-size:clamp(2rem,4vw,2.8rem);}
+.section-head p{
+  margin-top:16px;
+  max-width:52ch;
+  color:var(--paper-text-dim);
+  font-size:1.02rem;
+  line-height:1.6;
+}
+
+.reveal{opacity:0; transform:translateY(26px); transition:opacity .7s var(--ease), transform .7s var(--ease);}
+.reveal.in-view{opacity:1; transform:translateY(0);}
+
+/* ---------------- HERO ---------------- */
+.hero{
+  min-height:100vh;
+  background:var(--ink);
+  color:var(--ink-text);
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+.hero-topo{position:absolute;inset:0;width:100%;height:100%;opacity:.9;}
+.hero-vignette{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 30%, transparent 0%, var(--ink) 78%);
+}
+.hero-inner{
+  position:relative;z-index:2;
+  padding:120px clamp(20px,4vw,56px) 90px;
+  max-width:920px;
+}
+.hero-coord{
+  font-family:var(--font-mono);
+  font-size:.78rem;
+  letter-spacing:.12em;
+  color:var(--flag);
+  margin-bottom:26px;
+  display:flex;gap:10px;flex-wrap:wrap;
+}
+.hero-coord span{opacity:.55;color:var(--ink-text-dim);}
+.hero h2{
+  font-size:clamp(3rem,8vw,5.6rem);
+  line-height:.98;
+  font-weight:600;
+  color:var(--ink-text);
+}
+.hero .role-line{
+  margin-top:26px;
+  font-family:var(--font-mono);
+  font-size:clamp(1rem,2vw,1.3rem);
+  color:var(--ink-text-dim);
+  min-height:1.6em;
+}
+.hero .role-line .cursor{
+  display:inline-block;width:2px;height:1em;background:var(--flag);
+  margin-left:3px;vertical-align:-.15em;
+  animation:blink 1s step-end infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+.hero-cta{
+  margin-top:44px;
+  display:flex;gap:16px;flex-wrap:wrap;
+}
+.btn{
+  font-family:var(--font-mono);
+  font-size:.78rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:14px 26px;
+  border-radius:30px;
+  display:inline-flex;align-items:center;gap:10px;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s;
+}
+.btn-primary{background:var(--flag); color:#f5f7ff;}
+.btn-primary:hover{transform:translateY(-3px); box-shadow:0 14px 28px -12px rgba(0,144,212,.6);}
+.btn-ghost{border:1px solid rgba(16,26,51,.25); color:var(--ink-text);}
+.btn-ghost:hover{border-color:var(--flag); color:var(--flag); transform:translateY(-3px);}
+.btn svg{width:14px;height:14px;}
+
+.scroll-cue{
+  position:absolute; bottom:34px; left:clamp(20px,4vw,56px);
+  z-index:2;
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-mono);
+  font-size:.66rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-text-dim);
+}
+.scroll-cue .line{width:1px;height:34px;background:linear-gradient(var(--flag), transparent); animation:cueMove 1.8s ease-in-out infinite;}
+@keyframes cueMove{0%,100%{opacity:.3;} 50%{opacity:1;}}
+
+/* ---------------- ABOUT ---------------- */
+.about{background:var(--paper);}
+.about-grid{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:56px;
+  padding-bottom:100px;
+  align-items:start;
+}
+.plaque{
+  border:1px solid var(--paper-line);
+  border-radius:16px;
+  padding:34px 26px;
+  background:var(--paper-dim);
+  text-align:center;
+  position:sticky;
+  top:40px;
+}
+.plaque-ring{
+  width:120px;height:120px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  border:1.5px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.plaque-ring::before{content:"";position:absolute;inset:10px;border:1px solid rgba(0,144,212,.4);border-radius:50%;}
+.plaque-ring span{font-family:var(--font-display);font-size:2.6rem;color:var(--flag);font-weight:600;}
+.plaque h3{font-size:1.15rem;}
+.plaque .plaque-role{font-family:var(--font-mono); font-size:.72rem; color:var(--paper-text-dim); margin-top:6px; letter-spacing:.05em;}
+.plaque hr{border:none;border-top:1px dashed var(--paper-line); margin:20px 0;}
+.plaque-status{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--font-mono); font-size:.7rem; letter-spacing:.08em;
+  color:var(--water);
+}
+.plaque-status i{width:7px;height:7px;border-radius:50%;background:#3f9d5c;display:inline-block;}
+
+.about-body h3{font-size:clamp(1.5rem,2.6vw,1.9rem); margin-bottom:14px;}
+.about-body .lede{
+  font-style:italic; font-size:1.08rem; color:var(--paper-text-dim); line-height:1.7;
+  padding-left:18px; border-left:2px solid var(--flag);
+  margin-bottom:26px;
+}
+.about-body p.body-text{line-height:1.8; color:var(--paper-text); margin-bottom:26px;}
+.data-table{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 30px;
+  border-top:1px solid var(--paper-line);
+  padding-top:18px;
+}
+.data-row{
+  display:flex; justify-content:space-between; gap:10px;
+  padding:10px 0;
+  border-bottom:1px dashed var(--paper-line);
+  font-size:.92rem;
+}
+.data-row .k{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.07em; color:var(--paper-text-dim);}
+.data-row .v{font-weight:500; text-align:right;}
+
+/* ---------------- STATS / ACHIEVEMENTS ---------------- */
+.stats{background:var(--paper); color:var(--ink-text);}
+.stats .section-head p{color:var(--ink-text-dim);}
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:rgba(16,26,51,.08);
+  border:1px solid rgba(16,26,51,.08);
+  border-radius:18px;
+  overflow:hidden;
+  margin-bottom:100px;
+}
+.stat-card{
+  background:var(--ink);
+  padding:38px 30px;
+  transition:background .3s;
+}
+.stat-card:hover{background:var(--ink-soft);}
+.stat-card .marker{
+  width:30px;height:30px;
+  margin-bottom:20px;
+}
+.stat-card .marker svg{width:100%;height:100%; stroke:var(--flag);}
+.stat-card .num{
+  font-family:var(--font-display);
+  font-size:clamp(1.8rem,3vw,2.4rem);
+  color:var(--ink-text);
+  font-weight:600;
+}
+.stat-card .lbl{margin-top:10px; font-size:.92rem; color:var(--ink-text-dim); line-height:1.5;}
+.stat-card .lbl b{color:var(--ink-text); display:block; font-weight:600; margin-bottom:3px; font-size:.85rem; letter-spacing:.02em;}
+
+/* ---------------- SKILLS ---------------- */
+.skills{background:var(--paper);}
+.skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:0 60px; padding-bottom:100px;}
+.skill-row{padding:18px 0; border-bottom:1px solid var(--paper-line);}
+.skill-row .top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px;}
+.skill-row .name{font-weight:500; font-size:.98rem;}
+.skill-row .pct{font-family:var(--font-mono); font-size:.78rem; color:var(--flag);}
+.meter{
+  position:relative;
+  height:8px;
+  background:repeating-linear-gradient(90deg, var(--paper-line) 0 1px, transparent 1px 10%);
+  border-radius:2px;
+}
+.meter-fill{
+  position:absolute; top:0; left:0; height:100%;
+  background:linear-gradient(90deg, var(--water), var(--flag));
+  border-radius:2px;
+  width:0%;
+  transition:width 1.4s var(--ease);
+}
+
+/* ---------------- RESUME / TIMELINE ---------------- */
+.resume{background:var(--paper);}
+.resume-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; padding-bottom:110px;}
+.tl-heading{
+  font-family:var(--font-mono); font-size:.75rem; text-transform:uppercase; letter-spacing:.1em;
+  color:var(--water); margin-bottom:26px; display:flex; align-items:center; gap:10px;
+}
+.tl-heading::after{content:""; flex:1; height:1px; background:var(--paper-line);}
+.timeline{position:relative; padding-left:28px; border-left:1.5px solid var(--paper-line);}
+.tl-item{position:relative; padding-bottom:38px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{
+  content:"";
+  position:absolute; left:-33.5px; top:3px;
+  width:11px;height:11px; border-radius:50%;
+  background:var(--paper); border:2px solid var(--flag);
+}
+.tl-date{font-family:var(--font-mono); font-size:.72rem; color:var(--paper-text-dim); letter-spacing:.05em;}
+.tl-item h4{font-size:1.12rem; margin-top:6px;}
+.tl-item .org{font-style:italic; color:var(--paper-text-dim); font-size:.92rem; margin-top:3px;}
+.tl-item ul{margin-top:12px; display:flex; flex-direction:column; gap:7px;}
+.tl-item li{font-size:.92rem; line-height:1.55; padding-left:18px; position:relative; color:var(--paper-text);}
+.tl-item li::before{content:"—"; position:absolute; left:0; color:var(--flag);}
+.tl-item p.desc{margin-top:10px; font-size:.92rem; line-height:1.6; color:var(--paper-text);}
+.contact-mini{margin-top:0;}
+.contact-mini ul{display:flex; flex-direction:column; gap:9px;}
+.contact-mini li{font-family:var(--font-mono); font-size:.85rem; color:var(--paper-text-dim);}
+
+/* ---------------- PROJECTS ---------------- */
+.projects{background:var(--paper); color:var(--ink-text);}
+.projects .section-head p{color:var(--ink-text-dim);}
+.proj-grid{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:26px; padding-bottom:110px;
+}
+.proj-card{
+  border:1px solid rgba(16,26,51,.12);
+  border-radius:16px;
+  overflow:hidden;
+  background:var(--ink-soft);
+  transition:transform .35s var(--ease), border-color .35s;
+  display:flex; flex-direction:column;
+}
+.proj-card:hover{transform:translateY(-8px); border-color:var(--flag);}
+.proj-media{
+  aspect-ratio:4/3;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid rgba(16,26,51,.08);
+}
+.proj-media svg{width:100%;height:100%;display:block;}
+.proj-sheet{
+  position:absolute; top:12px; left:12px;
+  font-family:var(--font-mono); font-size:.62rem; letter-spacing:.08em;
+  background:rgba(19,31,25,.75); color:#dbe6fb;
+  padding:4px 9px; border-radius:20px; border:1px solid rgba(255,255,255,.25);
+}
+.proj-body{padding:22px 24px 26px; flex:1; display:flex; flex-direction:column;}
+.proj-body h4{font-size:1.08rem;}
+.proj-body p{margin-top:9px; font-size:.88rem; line-height:1.55; color:var(--ink-text-dim); flex:1;}
+.proj-link{
+  margin-top:16px; display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--font-mono); font-size:.74rem; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--flag);
+}
+.proj-link svg{width:13px;height:13px; transition:transform .25s;}
+.proj-card:hover .proj-link svg{transform:translate(3px,-3px);}
+
+/* ---------------- SERVICES ---------------- */
+.services{background:var(--paper);}
+.serv-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding-bottom:110px;}
+.serv-card{
+  border:1px dashed var(--paper-line);
+  border-radius:14px;
+  padding:28px 24px;
+  transition:border-color .3s, background .3s, transform .3s;
+}
+.serv-card:hover{border-color:var(--flag); border-style:solid; background:var(--paper-dim); transform:translateY(-4px);}
+.serv-icon{width:38px;height:38px; margin-bottom:18px;}
+.serv-icon svg{width:100%;height:100%; stroke:var(--water);}
+.serv-card:hover .serv-icon svg{stroke:var(--flag);}
+.serv-card h4{font-size:1.02rem; margin-bottom:9px;}
+.serv-card p{font-size:.86rem; line-height:1.55; color:var(--paper-text-dim);}
+
+/* ---------------- CONTACT ---------------- */
+.contact{background:var(--paper-dim);}
+.contact-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:56px; padding-bottom:110px;}
+.contact-plaque{
+  border:1px solid var(--paper-line); border-radius:16px; overflow:hidden;
+  background:var(--paper);
+}
+.contact-info-item{
+  display:flex; gap:16px; padding:22px 24px;
+  border-bottom:1px solid var(--paper-line);
+}
+.contact-info-item:last-of-type{border-bottom:none;}
+.contact-info-item svg{width:20px;height:20px; stroke:var(--flag); flex-shrink:0; margin-top:2px;}
+.contact-info-item h5{font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; color:var(--paper-text-dim); margin-bottom:4px;}
+.contact-info-item p{font-weight:500;}
+.map-embed{width:100%; height:220px; border:0; filter:grayscale(.35) contrast(1.05);}
+
+.form-card{
+  border:1px solid var(--paper-line); border-radius:16px; padding:36px;
+  background:var(--paper);
+}
+.form-row{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:22px;}
+.field{display:flex; flex-direction:column; gap:8px;}
+.field.full{grid-column:1/-1;}
+.field label{font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; color:var(--paper-text-dim);}
+.field input, .field textarea{
+  border:none; border-bottom:1.5px solid var(--paper-line);
+  background:transparent; padding:9px 2px; color:var(--paper-text);
+  transition:border-color .25s;
+}
+.field input:focus, .field textarea:focus{border-color:var(--flag); outline:none;}
+.field textarea{resize:vertical; min-height:110px;}
+.form-foot{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:8px; flex-wrap:wrap;}
+.form-note{font-family:var(--font-mono); font-size:.72rem; color:var(--paper-text-dim);}
+
+/* ---------------- FOOTER ---------------- */
+.footer{
+  background:var(--ink-soft); color:var(--ink-text-dim);
+  padding:34px 0;
+  font-family:var(--font-mono); font-size:.75rem; letter-spacing:.03em;
+}
+.footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;}
+.footer .flag-dot{color:var(--flag);}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1100px){
+  .sidebar{transform:translateX(-100%); box-shadow:20px 0 60px rgba(0,0,0,.4);}
+  .sidebar.open{transform:translateX(0);}
+  .main{margin-left:0;}
+  .nav-toggle{display:flex;}
+  .about-grid{grid-template-columns:1fr;}
+  .plaque{position:static; max-width:280px;}
+}
+@media (max-width:900px){
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .proj-grid{grid-template-columns:1fr 1fr;}
+  .serv-grid{grid-template-columns:1fr 1fr;}
+  .skills-grid{grid-template-columns:1fr;}
+  .resume-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+}
+@media (max-width:620px){
+  .stats-grid{grid-template-columns:1fr;}
+  .proj-grid{grid-template-columns:1fr;}
+  .serv-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .sheet-tag{display:none;}
+  .hero h2{font-size:clamp(2.4rem,12vw,3.4rem);}
+}
+</style>
 </head>
+<body>
 
-<body class="index-page">
+<!-- ICON SPRITE -->
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3z"/><path d="M3 6l9 7 9-7"/></symbol>
+<symbol id="ic-github" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></symbol>
+<symbol id="ic-linkedin" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8"/><path d="M12 16v-3a2 2 0 0 1 4 0v3"/><line x1="12" y1="11" x2="12" y2="16"/></symbol>
+<symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1.1.4 2.1.7 3.1a2 2 0 0 1-.4 2.1L8.1 10.2a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c1 .3 2 .6 3.1.7a2 2 0 0 1 1.7 2.1z"/></symbol>
+<symbol id="ic-menu" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></symbol>
+<symbol id="ic-close" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></symbol>
+<symbol id="ic-house" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></symbol>
+<symbol id="ic-person" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></symbol>
+<symbol id="ic-bolt" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="ic-file" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/></symbol>
+<symbol id="ic-images" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="15" height="14" rx="1.5"/><circle cx="8" cy="10" r="1.5"/><path d="M4 18l5-5 4 4 3-3 4 4"/></symbol>
+<symbol id="ic-stack" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 8l10 6 10-6z"/><path d="M2 14l10 6 10-6"/></symbol>
+<symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-12a7 7 0 0 0-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></symbol>
+<symbol id="ic-arrow-up-right" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="18" x2="18" y2="6"/><path d="M8 6h10v10"/></symbol>
+<symbol id="ic-target" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6" fill="currentColor"/></symbol>
+<symbol id="ic-layers" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 8l10 6 10-6z"/><path d="M2 12l10 6 10-6"/><path d="M2 16l10 6 10-6"/></symbol>
+<symbol id="ic-cpu" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1"/><rect x="9.5" y="9.5" width="5" height="5"/><line x1="9" y1="2" x2="9" y2="5"/><line x1="15" y1="2" x2="15" y2="5"/><line x1="9" y1="19" x2="9" y2="22"/><line x1="15" y1="19" x2="15" y2="22"/><line x1="2" y1="9" x2="5" y2="9"/><line x1="2" y1="15" x2="5" y2="15"/><line x1="19" y1="9" x2="22" y2="9"/><line x1="19" y1="15" x2="22" y2="15"/></symbol>
+<symbol id="ic-therm" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0z"/></symbol>
+<symbol id="ic-road" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21 9 3h6l3 18"/><line x1="12" y1="5" x2="12" y2="9"/><line x1="12" y1="12" x2="12" y2="15"/><line x1="12" y1="18" x2="12" y2="19.5"/></symbol>
+<symbol id="ic-map" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3 3 5v16l6-2 6 2 6-2V3l-6 2-6-2z"/><line x1="9" y1="3" x2="9" y2="19"/><line x1="15" y1="5" x2="15" y2="21"/></symbol>
+<symbol id="ic-camera" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v12H4z"/><circle cx="12" cy="14" r="3.5"/></symbol>
+<symbol id="ic-water" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s6 7 6 11.5a6 6 0 0 1-12 0C6 9 12 2 12 2z"/></symbol>
+<symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="1.5"/><path d="M8 12l2.5 2.5L16 9"/></symbol>
+<symbol id="ic-easel" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v13H4z"/><path d="M9 21l3-4 3 4"/><path d="M12 4v13"/></symbol>
+<symbol id="ic-geo" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="8" r="2.6"/></symbol>
+<symbol id="ic-download" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></symbol>
+</defs>
+</svg>
 
-  <header id="header" class="header dark-background d-flex flex-column">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
+<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><svg><use href="#ic-menu"/></svg></button>
 
-    <div class="profile-img">
-      <img src="assets/img/my-profile-img.jpg" alt="Sandeep Gautam" class="img-fluid rounded-circle">
-    </div>
-
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-      <h1 class="sitename">Sandeep Gautam</h1>
-    </a>
-
-    <div class="social-links text-center">
-      <a href="mailto:gtmsandeep2@gmail.com" class="email"><i class="bi bi-envelope"></i></a>
-      <a href="https://github.com/sanme10" target="_blank" rel="noopener" class="github"><i class="bi bi-github"></i></a>
-      <a href="https://www.linkedin.com/in/sandeepgautam10/" target="_blank" rel="noopener" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      <a href="tel:+9779869337930" class="phone"><i class="bi bi-telephone"></i></a>
-    </div>
-
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i>About</a></li>
-        <li><a href="#skills"><i class="bi bi-lightning navicon"></i>Skills</a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i>Resume</a></li>
-        <li><a href="#portfolio"><i class="bi bi-images navicon"></i>Projects</a></li>
-        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i>Services</a></li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i>Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="main">
-
-    <section id="hero" class="hero section dark-background">
-      <img src="assets\img\hero_bg.png" alt="" data-aos="fade-in">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2>Sandeep Gautam</h2>
-        <p>I'm a Geomatics Engineer<br>
-   <span class="typed" data-typed-items="GIS &amp; Remote Sensing Analyst, GeoAI Developer, Spatial Data Consultant"></span>
-</p>
-      </div>
-    </section>
-
-    <section id="about" class="about section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <p>Geomatics Engineer with experience in GIS, remote sensing, hydrological analysis, and land use-land cover modeling. I build practical geospatial solutions using UAV, LiDAR, satellite imagery, and GeoAI workflows including U-Net and YOLO-based feature extraction.</p>
-      </div>
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4">
-            <img src="assets/img/my-profile-img.jpg" class="img-fluid" alt="Profile photo">
-          </div>
-          <div class="col-lg-8 content">
-            <h2>Geomatics Engineer &amp; GeoAI Practitioner</h2>
-            <p class="fst-italic py-3">
-              Focused on turning complex geospatial and AI outputs into decision-ready insights for planning, risk assessment, and environmental management.
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+977 9869337930</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>gtmsandeep2@gmail.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Pokhara, Nepal</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>GitHub:</strong> <span>github.com/sanme10</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor in Geomatics Engineering</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>University:</strong> <span>Tribhuvan University</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Languages:</strong> <span>Nepali, English, Hindi</span></li>
-                </ul>
-              </div>
-            </div>
-            <p class="py-3">
-              I have contributed to reservoir sedimentation studies, flood risk assessment, and large-scale geospatial data standardization projects for international clients, while continuing to expand capabilities in deep learning for remote sensing.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<section id="impact" class="stats section">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title text-center">
-      <h2>Key Achievements</h2>
-      <p>Delivering high-precision geospatial data, AI-driven insights, and engineering-grade analysis</p>
-    </div>
-
-    <div class="row gy-4">
-
-      <div class="col-lg-4 col-md-6">
-        <div class="stats-item text-center">
-          <i class="bi bi-bounding-box"></i>
-          <h3 class="stat-number">96.1%</h3>
-          <p><strong>Detection Accuracy</strong><br>YOLOv8 Building Identification</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <div class="stats-item text-center">
-          <i class="bi bi-cpu"></i>
-          <h3 class="stat-number">0.93 IoU</h3>
-          <p><strong>GeoAI Segmentation</strong><br>U-Net Feature Extraction</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <div class="stats-item text-center">
-          <i class="bi bi-thermometer-sun"></i>
-          <h3 class="stat-number">15 Years Data</h3>
-          <p><strong>Urban Heat Island</strong><br>Spatio-temporal Analysis & Prediction</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <div class="stats-item text-center">
-          <i class="bi bi-layers"></i>
-          <h3 class="stat-number">LiDAR</h3>
-          <p><strong>Point Cloud Processing</strong><br>High-precision DTM & DSM Generation</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <div class="stats-item text-center">
-          <i class="bi bi-signpost-2"></i>
-          <h3 class="stat-number">1 million+ ft</h3>
-          <p><strong>Road Network</strong><br>Digitized with ~1 ft accuracy</p>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <div class="stats-item text-center">
-          <i class="bi bi-pin-map"></i>
-          <h3 class="stat-number">7,000+</h3>
-          <p><strong>Address Points</strong><br>Standardized for GIS-ready datasets</p>
-        </div>
-      </div>
-
-    </div>
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="brand-mark"><span>SG</span></div>
+    <h1>Sandeep Gautam</h1>
+    <div class="role-tag">Geomatics Engineer</div>
   </div>
-</section>
 
-    <section id="skills" class="skills section light-background">
-      <div class="container section-title" data-aos="fade-up">
+  <div class="social-row">
+    <a href="mailto:gtmsandeep2@gmail.com" aria-label="Email"><svg><use href="#ic-mail"/></svg></a>
+    <a href="https://github.com/sanme10" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#ic-github"/></svg></a>
+    <a href="https://www.linkedin.com/in/sandeepgautam10/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#ic-linkedin"/></svg></a>
+    <a href="tel:+9779869337930" aria-label="Phone"><svg><use href="#ic-phone"/></svg></a>
+  </div>
+
+  <nav class="navmenu">
+    <ul>
+      <li><a href="#hero" class="active" data-sec="hero"><svg width="15" height="15"><use href="#ic-house"/></svg>Home</a></li>
+      <li><a href="#about" data-sec="about"><svg width="15" height="15"><use href="#ic-person"/></svg>About</a></li>
+      <li><a href="#skills" data-sec="skills"><svg width="15" height="15"><use href="#ic-bolt"/></svg>Skills</a></li>
+      <li><a href="#resume" data-sec="resume"><svg width="15" height="15"><use href="#ic-file"/></svg>Resume</a></li>
+      <li><a href="#portfolio" data-sec="portfolio"><svg width="15" height="15"><use href="#ic-images"/></svg>Projects</a></li>
+      <li><a href="#services" data-sec="services"><svg width="15" height="15"><use href="#ic-stack"/></svg>Services</a></li>
+      <li><a href="#contact" data-sec="contact"><svg width="15" height="15"><use href="#ic-mail"/></svg>Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-foot">Available for new projects</div>
+</aside>
+
+<main class="main">
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <svg class="hero-topo" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <g fill="none" stroke="#3d5a80" stroke-width="1.2">
+        <path opacity=".18" d="M-50,760 C250,700 400,780 650,720 C900,660 1100,740 1650,690"/>
+        <path opacity=".22" d="M-50,700 C260,630 420,710 660,650 C920,590 1120,670 1650,610"/>
+        <path opacity=".28" d="M-50,635 C270,560 440,640 670,570 C930,500 1130,590 1650,530"/>
+        <path opacity=".34" stroke-width="1.6" d="M-50,565 C280,480 450,570 680,490 C940,410 1140,510 1650,445"/>
+        <path opacity=".38" d="M-50,495 C290,400 460,500 690,410 C950,320 1150,430 1650,360"/>
+        <path opacity=".44" stroke-width="1.6" d="M-50,420 C300,320 470,430 700,330 C960,235 1160,350 1650,270"/>
+        <path opacity=".48" d="M-50,345 C310,235 480,355 710,245 C970,140 1170,265 1650,175"/>
+        <path opacity=".55" stroke-width="1.8" d="M-50,265 C320,150 490,275 720,155 C980,45 1180,175 1650,80"/>
+        <path opacity=".4" d="M-50,825 C240,780 410,840 660,790 C910,740 1110,800 1650,760"/>
+      </g>
+      <g font-family="Roboto Mono, monospace" font-size="13" fill="#3d5a80" opacity=".5">
+        <text x="60" y="558">750</text>
+        <text x="60" y="413">800</text>
+        <text x="60" y="258">850</text>
+      </g>
+      <circle cx="1180" cy="330" r="3" fill="#0090D4"/>
+      <line x1="1180" y1="330" x2="1180" y2="300" stroke="#0090D4" stroke-width="1"/>
+      <text x="1188" y="300" font-family="Roboto Mono, monospace" font-size="11" fill="#0090D4">BM 827M</text>
+    </svg>
+    <div class="hero-vignette"></div>
+    <div class="hero-inner">
+      <div class="hero-coord">28.2096°N · 83.9856°E <span>· PHEWA WATERSHED, GANDAKI, NEPAL</span></div>
+      <h2>Sandeep<br>Gautam</h2>
+      <div class="role-line"><span id="typedRole">GIS &amp; Remote Sensing Analyst</span><span class="cursor"></span></div>
+      <div class="hero-cta">
+        <a href="#portfolio" class="btn btn-primary">View Projects <svg><use href="#ic-arrow-up-right"/></svg></a>
+        <a href="Sandeep_Gautam_CV.pdf" download class="btn btn-ghost">Download CV <svg><use href="#ic-download"/></svg></a>
+        <a href="#contact" class="btn btn-ghost">Get In Touch <svg><use href="#ic-mail"/></svg></a>
+      </div>
+    </div>
+    <div class="scroll-cue"><span class="line"></span>Scroll to survey</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>About</h2>
+        <p>Geomatics Engineer with experience in GIS, remote sensing, hydrological analysis, and land use–land cover modeling — building practical geospatial solutions from UAV, LiDAR, and satellite imagery.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="plaque reveal">
+          <div class="plaque-ring"><span>SG</span></div>
+          <h3>Sandeep Gautam</h3>
+          <div class="plaque-role">Geomatics Engineer</div>
+          <hr>
+          <div class="plaque-status"><i></i>Available for freelance</div>
+        </div>
+
+        <div class="about-body reveal">
+          <h3>Geomatics Engineer &amp; GeoAI Practitioner</h3>
+          <p class="lede">Focused on turning complex geospatial and AI outputs into decision-ready insights for planning, risk assessment, and environmental management.</p>
+          <p class="body-text">I have contributed to reservoir sedimentation studies, flood risk assessment, and large-scale geospatial data standardization projects for international clients — while continuing to expand capabilities in deep learning for remote sensing, including U-Net and YOLO-based feature extraction.</p>
+
+          <div class="data-table">
+            <div class="data-row"><span class="k">Phone</span><span class="v">+977 9869337930</span></div>
+            <div class="data-row"><span class="k">Degree</span><span class="v">B.E. Geomatics Engineering</span></div>
+            <div class="data-row"><span class="k">Email</span><span class="v">gtmsandeep2@gmail.com</span></div>
+            <div class="data-row"><span class="k">University</span><span class="v">Tribhuvan University</span></div>
+            <div class="data-row"><span class="k">City</span><span class="v">Pokhara, Nepal</span></div>
+            <div class="data-row"><span class="k">Freelance</span><span class="v">Available</span></div>
+            <div class="data-row"><span class="k">GitHub</span><span class="v">github.com/sanme10</span></div>
+            <div class="data-row"><span class="k">Languages</span><span class="v">Nepali, English, Hindi</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="impact" class="stats">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Key Achievements</h2>
+        <p>Delivering high-precision geospatial data, AI-driven insight, and engineering-grade analysis.</p>
+      </div>
+
+      <div class="stats-grid reveal">
+        <div class="stat-card">
+          <div class="marker"><svg><use href="#ic-target"/></svg></div>
+          <div class="num">96.1%</div>
+          <div class="lbl"><b>Detection Accuracy</b>YOLOv8 building identification</div>
+        </div>
+        <div class="stat-card">
+          <div class="marker"><svg><use href="#ic-cpu"/></svg></div>
+          <div class="num">0.93 IoU</div>
+          <div class="lbl"><b>GeoAI Segmentation</b>U-Net feature extraction</div>
+        </div>
+        <div class="stat-card">
+          <div class="marker"><svg><use href="#ic-therm"/></svg></div>
+          <div class="num">15 Years</div>
+          <div class="lbl"><b>Urban Heat Island</b>Spatio-temporal analysis &amp; prediction</div>
+        </div>
+        <div class="stat-card">
+          <div class="marker"><svg><use href="#ic-layers"/></svg></div>
+          <div class="num">LiDAR</div>
+          <div class="lbl"><b>Point Cloud Processing</b>High-precision DTM &amp; DSM generation</div>
+        </div>
+        <div class="stat-card">
+          <div class="marker"><svg><use href="#ic-road"/></svg></div>
+          <div class="num">1M+ ft</div>
+          <div class="lbl"><b>Road Network</b>Digitized to ~1 ft accuracy</div>
+        </div>
+        <div class="stat-card">
+          <div class="marker"><svg><use href="#ic-pin"/></svg></div>
+          <div class="num">7,000+</div>
+          <div class="lbl"><b>Address Points</b>Standardized into GIS-ready datasets</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
         <h2>Skills</h2>
         <p>Core capabilities in geospatial analysis, GeoAI modeling, field surveys, and technical communication.</p>
       </div>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row skills-content skills-animation">
-          <div class="col-lg-6">
-            <div class="progress">
-              <span class="skill"><span>ArcGIS / QGIS</span> <i class="val">95%</i></span>
-              <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div></div>
-            </div>
-            <div class="progress">
-              <span class="skill"><span>Remote Sensing</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div></div>
-            </div>
-            <div class="progress">
-              <span class="skill"><span>Python for Geospatial Data</span> <i class="val">85%</i></span>
-              <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div></div>
-            </div>
-            <div class="progress">
-              <span class="skill"><span>Google Earth Engine</span> <i class="val">80%</i></span>
-              <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div></div>
-            </div>
+      <div class="skills-grid reveal">
+        <div>
+          <div class="skill-row" data-pct="95">
+            <div class="top"><span class="name">ArcGIS / QGIS</span></div>
+            <div class="meter"><div class="meter-fill"></div></div>
           </div>
-
-          <div class="col-lg-6">
-            <div class="progress">
-              <span class="skill"><span>GeoAI (U-Net / YOLOv8)</span> <i class="val">88%</i></span>
-              <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div></div>
-            </div>
-            <div class="progress">
-              <span class="skill"><span>Hydrological Modeling (HEC-RAS)</span> <i class="val">82%</i></span>
-              <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div></div>
-            </div>
-            <div class="progress">
-              <span class="skill"><span>UAV / DGPS / LiDAR Workflows</span> <i class="val">87%</i></span>
-              <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"></div></div>
-            </div>
-            <div class="progress">
-              <span class="skill"><span>StoryMaps & Web Visualization</span> <i class="val">78%</i></span>
-              <div class="progress-bar-wrap"><div class="progress-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div></div>
-            </div>
+          <div class="skill-row" data-pct="90">
+            <div class="top"><span class="name">Remote Sensing</span></div>
+            <div class="meter"><div class="meter-fill"></div></div>
+          </div>
+          <div class="skill-row" data-pct="85">
+            <div class="top"><span class="name">Python for Geospatial Data</span></div>
+            <div class="meter"><div class="meter-fill"></div></div>
+          </div>
+          <div class="skill-row" data-pct="80">
+            <div class="top"><span class="name">Google Earth Engine</span></div>
+            <div class="meter"><div class="meter-fill"></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="skill-row" data-pct="88">
+            <div class="top"><span class="name">GeoAI (U-Net / YOLOv8)</span></div>
+            <div class="meter"><div class="meter-fill"></div></div>
+          </div>
+          <div class="skill-row" data-pct="82">
+            <div class="top"><span class="name">Hydrological Modeling (HEC-RAS)</span></div>
+            <div class="meter"><div class="meter-fill"></div></div>
+          </div>
+          <div class="skill-row" data-pct="87">
+            <div class="top"><span class="name">UAV / DGPS / LiDAR Workflows</span></div>
+            <div class="meter"><div class="meter-fill"></div></div>
+          </div>
+          <div class="skill-row" data-pct="78">
+            <div class="top"><span class="name">StoryMaps &amp; Web Visualization</span></div>
+            <div class="meter"><div class="meter-fill"></div></div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="resume" class="resume section">
-      <div class="container section-title" data-aos="fade-up">
+  <!-- RESUME -->
+  <section id="resume" class="resume">
+    <div class="wrap">
+      <div class="section-head reveal">
         <h2>Resume</h2>
         <p>Academic background in geomatics engineering with hands-on experience in remote sensing, spatial analytics, and AI-assisted mapping workflows.</p>
       </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Summary</h3>
-            <div class="resume-item pb-0">
-              <h4>Sandeep Gautam</h4>
-              <p><em>Geomatics Engineer delivering GIS, remote sensing, and GeoAI solutions for infrastructure, environment, and risk planning use-cases.</em></p>
-              <ul>
-                <li>Pokhara, Nepal</li>
-                <li>+977 9869337930</li>
-                <li>gtmsandeep2@gmail.com</li>
-              </ul>
-            </div>
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
+      <div class="resume-grid reveal">
+        <div>
+          <div class="tl-heading">Education</div>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-date">2021 — 2025</div>
               <h4>Bachelor in Geomatics Engineering</h4>
-              <h5>2021 - 2025</h5>
-              <p><em>Pashchimanchal Campus, Tribhuvan University, Pokhara</em></p>
-              <p>Aggregate: 74.81%. Coursework included GIS, cartography, remote sensing, photogrammetry, satellite positioning, and Python programming.</p>
+              <div class="org">Pashchimanchal Campus, Tribhuvan University, Pokhara</div>
+              <p class="desc">Aggregate 74.81%. Coursework in GIS, cartography, remote sensing, photogrammetry, satellite positioning, and Python programming.</p>
             </div>
-            <div class="resume-item">
+            <div class="tl-item">
+              <div class="tl-date">2018 — 2020</div>
               <h4>Higher Secondary Education (Science)</h4>
-              <h5>2018 - 2020</h5>
-              <p><em>SOS Hermann Gmeiner School, Gandaki</em></p>
-              <p>CGPA: 3.58 with focus on mathematics and science foundations for engineering studies.</p>
+              <div class="org">SOS Hermann Gmeiner School, Gandaki</div>
+              <p class="desc">CGPA 3.58, with focus on mathematics and science foundations for engineering studies.</p>
             </div>
           </div>
+        </div>
 
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
+        <div>
+          <div class="tl-heading">Experience</div>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-date">Apr 2025 — Present</div>
               <h4>Geomatics Engineer</h4>
-              <h5>Apr 2025 - Present</h5>
-              <p><em>Geo3D Modelling, Kathmandu, Nepal</em></p>
+              <div class="org">Geo3D Modelling, Kathmandu, Nepal</div>
               <ul>
                 <li>Processed UAV, DGPS, LiDAR, and bathymetry datasets for mapping and monitoring.</li>
                 <li>Contributed to sedimentation studies of Phewa and Kulekhani reservoirs.</li>
                 <li>Led QA/QC, spatial validation, and attribute correction for production datasets.</li>
               </ul>
             </div>
-            <div class="resume-item">
-              <h4>Freshwater and Community Conservation Extern</h4>
-              <h5>Jul 2025 - Sep 2025</h5>
-              <p><em>National Geographic Society + The Nature Conservancy (Remote)</em></p>
+            <div class="tl-item">
+              <div class="tl-date">Jul 2025 — Sep 2025</div>
+              <h4>Freshwater &amp; Community Conservation Extern</h4>
+              <div class="org">National Geographic Society + The Nature Conservancy (Remote)</div>
               <ul>
                 <li>Performed landscape and gap analysis for freshwater issues around Phewa Lake.</li>
                 <li>Conducted participatory mapping with stakeholders and synthesized findings into a StoryMap dashboard.</li>
               </ul>
             </div>
-            <div class="resume-item">
+            <div class="tl-item">
+              <div class="tl-date">2023 — Present</div>
               <h4>Freelance GIS Analyst / Consultant</h4>
-              <h5>2023 - Present</h5>
-              <p><em>Remote (US & Europe Clients)</em></p>
+              <div class="org">Remote (US &amp; Europe Clients)</div>
               <ul>
                 <li>Standardized 7,000+ address points into topologically clean GeoPackage datasets.</li>
                 <li>Digitized 1 million+ feet of roadway features with high positional quality control.</li>
@@ -291,263 +878,272 @@
           </div>
         </div>
       </div>
-    </section>
-
-<section id="portfolio" class="portfolio section light-background">
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Projects</h2>
-    <p>Selected projects in GeoAI, urban climate analysis, freshwater conservation, sedimentation, and flood risk modeling.</p>
-  </div>
-
-  <div class="container">
-    <div class="row gy-4">
-
-      <!-- GeoAI Feature Extraction -->
-      <div class="col-lg-4 col-md-6 portfolio-item">
-        <a href="https://github.com/sanme10/GeoAI-Feature-Extraction" target="_blank">
-          <div class="portfolio-content h-100">
-            <div class="portfolio-media">
-              <img src="assets/img/portfolio/predicted_building_556.png" alt="GeoAI Feature Extraction">
-            </div>
-            <div class="portfolio-info">
-              <h4>GeoAI Feature Extraction</h4>
-              <p>U-Net segmentation + YOLOv8 detection from multispectral imagery.</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Urban Heat Island Prediction -->
-      <div class="col-lg-4 col-md-6 portfolio-item">
-        <a href="https://drive.google.com/file/d/1YGqbFsmRGV5r9jG5FRnJq58c7qxhJ13g/view" target="_blank">
-          <div class="portfolio-content h-100">
-            <div class="portfolio-media">
-              <img src="assets/img/portfolio/UHI_final.png" alt="Urban Heat Island Prediction">
-            </div>
-            <div class="portfolio-info">
-              <h4>Urban Heat Island Prediction</h4>
-              <p>Spatio-temporal Analysis of Urban Heat Islands using Remote Sensing</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Phewa Lake StoryMap -->
-      <div class="col-lg-4 col-md-6 portfolio-item">
-        <a href="https://storymaps.arcgis.com/stories/7dbb8799b7154d7098f98288aca08893" target="_blank">
-          <div class="portfolio-content h-100">
-            <div class="portfolio-media">
-              <iframe src="https://storymaps.arcgis.com/stories/7dbb8799b7154d7098f98288aca08893" 
-                      loading="lazy"></iframe>
-            </div>
-            <div class="portfolio-info">
-              <h4>Phewa Lake StoryMap</h4>
-              <p>Community-focused freshwater dashboard for stakeholder communication.</p>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Sedimentation Analysis
-      <div class="col-lg-4 col-md-6 portfolio-item">
-        <a href="https://link-to-sedimentation-analysis.com" target="_blank">
-          <div class="portfolio-content h-100">
-            <div class="portfolio-media">
-              <img src="assets/img/portfolio/books-1.jpg" alt="Sedimentation Analysis">
-            </div>
-            <div class="portfolio-info">
-              <h4>Sedimentation Analysis</h4>
-              <p>Bathymetric processing and sediment distribution mapping for reservoirs.</p>
-            </div>
-          </div>
-        </a>
-      </div> -->
-
-      <!-- Flood Risk Assessment
-      <div class="col-lg-4 col-md-6 portfolio-item">
-        <a href="https://link-to-flood-risk-assessment.com" target="_blank">
-          <div class="portfolio-content h-100">
-            <div class="portfolio-media">
-              <img src="assets/img/portfolio/app-2.jpg" alt="Flood Risk Assessment">
-            </div>
-            <div class="portfolio-info">
-              <h4>Flood Risk Assessment</h4>
-              <p>Watershed delineation, HEC-RAS modeling, and inundation mapping.</p>
-            </div>
-          </div>
-        </a>
-      </div> -->
-
     </div>
-  </div>
-</section>
-<style>
-/* Ensure images and iframe are same size and fully visible */
-.portfolio-media {
-  width: 100%;
-  height: 400px; /* same height for all images */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background-color: #f5f5f5; /* optional: background for smaller images */
-}
+  </section>
 
-.portfolio-media img,
-.portfolio-media iframe {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* shows full image without cropping */
-  border: none;
-}
-</style>
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Projects</h2>
+        <p>Selected work in GeoAI, urban climate analysis, and freshwater conservation.</p>
+      </div>
 
-    <section id="services" class="services section">
-      <div class="container section-title" data-aos="fade-up">
+      <div class="proj-grid reveal">
+        <a href="https://github.com/sanme10/GeoAI-Feature-Extraction" target="_blank" rel="noopener" class="proj-card">
+          <div class="proj-media">
+            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="300" fill="#121b2e"/>
+              <g stroke="#24314d" stroke-width="1">
+                <line x1="0" y1="60" x2="400" y2="60"/><line x1="0" y1="120" x2="400" y2="120"/>
+                <line x1="0" y1="180" x2="400" y2="180"/><line x1="0" y1="240" x2="400" y2="240"/>
+                <line x1="80" y1="0" x2="80" y2="300"/><line x1="160" y1="0" x2="160" y2="300"/>
+                <line x1="240" y1="0" x2="240" y2="300"/><line x1="320" y1="0" x2="320" y2="300"/>
+              </g>
+              <g fill="none" stroke="#0090D4" stroke-width="1.6">
+                <rect x="60" y="90" width="46" height="34"/>
+                <rect x="150" y="60" width="60" height="46"/>
+                <rect x="250" y="150" width="50" height="38"/>
+                <rect x="90" y="190" width="40" height="30"/>
+                <rect x="290" y="70" width="34" height="34"/>
+              </g>
+              <g fill="#33B5E8" opacity=".8">
+                <circle cx="83" cy="107" r="2"/><circle cx="180" cy="83" r="2"/>
+                <circle cx="275" cy="169" r="2"/><circle cx="110" cy="205" r="2"/>
+              </g>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h4>GeoAI Feature Extraction</h4>
+            <p>U-Net segmentation and YOLOv8 detection pipeline for building footprints from multispectral imagery.</p>
+            <span class="proj-link">View on GitHub <svg><use href="#ic-arrow-up-right"/></svg></span>
+          </div>
+        </a>
+
+        <a href="https://drive.google.com/file/d/1YGqbFsmRGV5r9jG5FRnJq58c7qxhJ13g/view" target="_blank" rel="noopener" class="proj-card">
+          <div class="proj-media">
+            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="uhi" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#33B5E8"/>
+                  <stop offset="45%" stop-color="#0090D4"/>
+                  <stop offset="100%" stop-color="#e0863f"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="#121b2e"/>
+              <g opacity=".85">
+                <rect x="0" y="0" width="400" height="300" fill="url(#uhi)" opacity=".28"/>
+                <circle cx="200" cy="150" r="110" fill="url(#uhi)" opacity=".55"/>
+                <circle cx="200" cy="150" r="70" fill="url(#uhi)" opacity=".7"/>
+                <circle cx="200" cy="150" r="34" fill="#e0863f" opacity=".85"/>
+              </g>
+              <g stroke="#f5f6fa" stroke-width="1" opacity=".35" fill="none">
+                <circle cx="200" cy="150" r="110"/><circle cx="200" cy="150" r="70"/><circle cx="200" cy="150" r="34"/>
+              </g>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h4>Urban Heat Island Prediction</h4>
+            <p>Spatio-temporal analysis of urban heat islands across 15 years of remote sensing data.</p>
+            <span class="proj-link">View Report <svg><use href="#ic-arrow-up-right"/></svg></span>
+          </div>
+        </a>
+
+        <a href="https://storymaps.arcgis.com/stories/7dbb8799b7154d7098f98288aca08893" target="_blank" rel="noopener" class="proj-card">
+          <div class="proj-media">
+            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="300" fill="#121b2e"/>
+              <path d="M0,180 C60,150 100,210 160,175 C220,140 260,200 320,165 C360,142 380,158 400,150 L400,300 L0,300 Z" fill="#33B5E8" opacity=".5"/>
+              <path d="M0,200 C70,175 110,225 170,195 C230,165 270,215 330,185 C365,166 385,178 400,172 L400,300 L0,300 Z" fill="#33B5E8" opacity=".7"/>
+              <g stroke="#3d5a80" stroke-width="1" fill="none" opacity=".5">
+                <path d="M-10,90 C80,60 140,110 220,75 C280,50 330,90 410,70"/>
+                <path d="M-10,120 C90,95 150,140 230,110 C290,88 340,120 410,102"/>
+              </g>
+              <circle cx="235" cy="150" r="3" fill="#0090D4"/>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h4>Phewa Lake StoryMap</h4>
+            <p>Community-focused freshwater dashboard synthesizing participatory mapping for stakeholder communication.</p>
+            <span class="proj-link">Open StoryMap <svg><use href="#ic-arrow-up-right"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services">
+    <div class="wrap">
+      <div class="section-head reveal">
         <h2>Services</h2>
         <p>Professional geospatial and GeoAI support for research, planning, and implementation teams.</p>
       </div>
 
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon flex-shrink-0"><i class="bi bi-map"></i></div>
-            <div>
-              <h4 class="title">GIS Analysis & Mapping</h4>
-              <p class="description">Spatial analysis, base map production, and geodatabase preparation for project workflows.</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon flex-shrink-0"><i class="bi bi-camera"></i></div>
-            <div>
-              <h4 class="title">UAV & LiDAR Processing</h4>
-              <p class="description">Drone and LiDAR data processing for terrain, monitoring, and high-accuracy mapping outputs.</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon flex-shrink-0"><i class="bi bi-cpu"></i></div>
-            <div>
-              <h4 class="title">GeoAI Model Development</h4>
-              <p class="description">Object detection and segmentation pipelines using deep learning for automated feature extraction.</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon flex-shrink-0"><i class="bi bi-water"></i></div>
-            <div>
-              <h4 class="title">Hydrology & Flood Studies</h4>
-              <p class="description">Runoff analysis, floodplain mapping, and risk zoning with GIS, RS, and HEC-RAS workflows.</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon flex-shrink-0"><i class="bi bi-check2-square"></i></div>
-            <div>
-              <h4 class="title">QA/QC for Geospatial Data</h4>
-              <p class="description">Topology checks, attribute normalization, and validation for integration-ready deliverables.</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-            <div class="icon flex-shrink-0"><i class="bi bi-easel"></i></div>
-            <div>
-              <h4 class="title">StoryMaps & Reporting</h4>
-              <p class="description">Interactive spatial narratives and reporting assets for technical and non-technical audiences.</p>
-            </div>
-          </div>
+      <div class="serv-grid reveal">
+        <div class="serv-card">
+          <div class="serv-icon"><svg><use href="#ic-map"/></svg></div>
+          <h4>GIS Analysis &amp; Mapping</h4>
+          <p>Spatial analysis, base map production, and geodatabase preparation for project workflows.</p>
+        </div>
+        <div class="serv-card">
+          <div class="serv-icon"><svg><use href="#ic-camera"/></svg></div>
+          <h4>UAV &amp; LiDAR Processing</h4>
+          <p>Drone and LiDAR data processing for terrain, monitoring, and high-accuracy mapping outputs.</p>
+        </div>
+        <div class="serv-card">
+          <div class="serv-icon"><svg><use href="#ic-cpu"/></svg></div>
+          <h4>GeoAI Model Development</h4>
+          <p>Object detection and segmentation pipelines using deep learning for automated feature extraction.</p>
+        </div>
+        <div class="serv-card">
+          <div class="serv-icon"><svg><use href="#ic-water"/></svg></div>
+          <h4>Hydrology &amp; Flood Studies</h4>
+          <p>Runoff analysis, floodplain mapping, and risk zoning with GIS, RS, and HEC-RAS workflows.</p>
+        </div>
+        <div class="serv-card">
+          <div class="serv-icon"><svg><use href="#ic-check"/></svg></div>
+          <h4>QA/QC for Geospatial Data</h4>
+          <p>Topology checks, attribute normalization, and validation for integration-ready deliverables.</p>
+        </div>
+        <div class="serv-card">
+          <div class="serv-icon"><svg><use href="#ic-easel"/></svg></div>
+          <h4>StoryMaps &amp; Reporting</h4>
+          <p>Interactive spatial narratives and reporting assets for technical and non-technical audiences.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact" class="contact section">
-      <div class="container section-title" data-aos="fade-up">
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
         <h2>Contact</h2>
         <p>Open to full-time roles, research collaborations, and freelance GIS or GeoAI projects.</p>
       </div>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-          <div class="col-lg-5">
-            <div class="info-wrap">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Address</h3>
-                  <p>Pokhara-14, Nepal</p>
-                </div>
-              </div>
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Call</h3>
-                  <p>+977 9869337930</p>
-                </div>
-              </div>
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email</h3>
-                  <p>gtmsandeep2@gmail.com</p>
-                </div>
-              </div>
-              <iframe src="https://www.google.com/maps?q=Pokhara%2C%20Nepal&output=embed" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+      <div class="contact-grid reveal">
+        <div class="contact-plaque">
+          <div class="contact-info-item">
+            <svg><use href="#ic-geo"/></svg>
+            <div><h5>Address</h5><p>Pokhara-14, Nepal</p></div>
           </div>
-
-          <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
-                <div class="col-md-6">
-                  <label for="name-field" class="pb-2">Your Name</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="email-field" class="pb-2">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email-field" required>
-                </div>
-                <div class="col-md-12">
-                  <label for="subject-field" class="pb-2">Subject</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" required>
-                </div>
-                <div class="col-md-12">
-                  <label for="message-field" class="pb-2">Message</label>
-                  <textarea class="form-control" name="message" rows="10" id="message-field" required></textarea>
-                </div>
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                  <button type="submit">Send Message</button>
-                </div>
-              </div>
-            </form>
+          <div class="contact-info-item">
+            <svg><use href="#ic-phone"/></svg>
+            <div><h5>Call</h5><p>+977 9869337930</p></div>
           </div>
+          <div class="contact-info-item">
+            <svg><use href="#ic-mail"/></svg>
+            <div><h5>Email</h5><p>gtmsandeep2@gmail.com</p></div>
+          </div>
+          <iframe class="map-embed" src="https://www.google.com/maps?q=Pokhara%2C%20Nepal&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Pokhara, Nepal"></iframe>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <footer id="footer" class="footer position-relative light-background">
-    <div class="container">
-      <div class="copyright text-center">
-        <p>&copy; <span>Copyright</span> <strong class="px-1 sitename">Sandeep Gautam</strong> <span>All Rights Reserved</span></p>
+        <form class="form-card" onsubmit="return handleSubmit(event)">
+          <div class="form-row">
+            <div class="field"><label for="name-field">Your Name</label><input type="text" id="name-field" name="name" required></div>
+            <div class="field"><label for="email-field">Your Email</label><input type="email" id="email-field" name="email" required></div>
+          </div>
+          <div class="field full" style="margin-bottom:22px;"><label for="subject-field">Subject</label><input type="text" id="subject-field" name="subject" required></div>
+          <div class="field full" style="margin-bottom:22px;"><label for="message-field">Message</label><textarea id="message-field" name="message" rows="6" required></textarea></div>
+          <div class="form-foot">
+            <span class="form-note" id="formStatus">All fields required · Response within 48h</span>
+            <button type="submit" class="btn btn-primary">Send Message <svg><use href="#ic-arrow-up-right"/></svg></button>
+          </div>
+        </form>
       </div>
-      
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>&copy; 2026 Sandeep Gautam. All rights reserved.</span>
+      <span><span class="flag-dot">●</span>&nbsp; Pokhara, Nepal</span>
     </div>
   </footer>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  <div id="preloader"></div>
+</main>
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+<script>
+// Mobile nav toggle
+const sidebar = document.getElementById('sidebar');
+const navToggle = document.getElementById('navToggle');
+navToggle.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  navToggle.innerHTML = sidebar.classList.contains('open')
+    ? '<svg><use href="#ic-close"/></svg>'
+    : '<svg><use href="#ic-menu"/></svg>';
+});
+document.querySelectorAll('.navmenu a').forEach(a => {
+  a.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    navToggle.innerHTML = '<svg><use href="#ic-menu"/></svg>';
+  });
+});
+
+// Typewriter role text
+const roles = ["GIS & Remote Sensing Analyst", "GeoAI Developer", "Spatial Data Consultant"];
+const typedEl = document.getElementById('typedRole');
+let rIdx = 0, cIdx = roles[0].length, deleting = true;
+function typeLoop(){
+  const current = roles[rIdx];
+  if(deleting){
+    cIdx--;
+    typedEl.textContent = current.substring(0, cIdx);
+    if(cIdx <= 0){ deleting = false; rIdx = (rIdx+1) % roles.length; setTimeout(typeLoop, 400); return; }
+    setTimeout(typeLoop, 35);
+  } else {
+    cIdx++;
+    typedEl.textContent = current.substring(0, cIdx);
+    if(cIdx >= current.length){ deleting = true; setTimeout(typeLoop, 1800); return; }
+    setTimeout(typeLoop, 55);
+  }
+}
+setTimeout(typeLoop, 1400);
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('in-view'); });
+}, {threshold:.15});
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Skill meters fill on view
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      const pct = entry.target.getAttribute('data-pct');
+      entry.target.querySelector('.meter-fill').style.width = pct + '%';
+      skillObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold:.4});
+document.querySelectorAll('.skill-row').forEach(el => skillObserver.observe(el));
+
+// Active nav highlighting
+const sections = document.querySelectorAll('main section[id]');
+const navLinks = document.querySelectorAll('.navmenu a');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.navmenu a[data-sec="${entry.target.id}"]`);
+      if(link) link.classList.add('active');
+    }
+  });
+}, {rootMargin:'-40% 0px -50% 0px', threshold:0});
+sections.forEach(sec => navObserver.observe(sec));
+
+// Contact form (static demo — no backend wired)
+function handleSubmit(e){
+  e.preventDefault();
+  const status = document.getElementById('formStatus');
+  status.textContent = 'Message noted — connect a form backend to send for real.';
+  status.style.color = 'var(--flag)';
+  e.target.reset();
+  return false;
+}
+</script>
 
 </body>
-
 </html>
