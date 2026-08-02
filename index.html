@@ -1159,15 +1159,14 @@ function handleSubmit(e){
   status.classList.remove('is-error');
   status.textContent = 'Sending…';
 
-  fetch(SHEET_SCRIPT_URL, { method: 'POST', body: new FormData(form) })
-    .then(res => res.json())
-    .then(data => {
-      if (data && data.result === 'success') {
-        status.textContent = 'Message sent — thank you! I will get back to you soon.';
-        form.reset();
-      } else {
-        throw new Error('Unexpected response');
-      }
+  fetch(SHEET_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: new FormData(form) })
+    .then(() => {
+      // mode:'no-cors' means we can't read the response (Apps Script redirects
+      // through googleusercontent.com and blocks that from JS) — but the POST
+      // still reaches the script and the row still gets written. If fetch
+      // resolves at all, treat it as success.
+      status.textContent = 'Message sent — thank you! I will get back to you soon.';
+      form.reset();
     })
     .catch(() => {
       status.classList.add('is-error');
